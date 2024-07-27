@@ -64,18 +64,27 @@
             ];
 
             const h1 = document.querySelector("h1");
+            let previousQuestionIndices = [];
 
-            function getRandomInteger(min, max) {
-                min = Math.ceil(min);
-                max = Math.floor(max);
-                return Math.floor(Math.random() * (max - min)) + min;
+            function getRandomInteger(min, max, excludeList) {
+                let rand;
+                do {
+                    rand = Math.floor(Math.random() * (max - min)) + min;
+                } while (excludeList.includes(rand));
+                return rand;
             }
 
             document.body.addEventListener("click", (e) => {
-                const randVal = getRandomInteger(0, questions.length);
-                const randColor = getRandomInteger(0, colors.length);
-                h1.innerHTML = questions[randVal];
-                document.body.style.background = colors[randColor];
+                if (previousQuestionIndices.length === questions.length) {
+                    previousQuestionIndices = [];
+                }
+                const questionIndex = getRandomInteger(0, questions.length, previousQuestionIndices);
+                const colorIndex = getRandomInteger(0, colors.length, []);
+
+                h1.innerHTML = questions[questionIndex];
+                document.body.style.background = colors[colorIndex];
+
+                previousQuestionIndices.push(questionIndex);
             });
         });
     </script>
