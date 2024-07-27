@@ -3,46 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Questions</title>
     <script defer>
         document.addEventListener("DOMContentLoaded", (e) => {
-            console.log("testing...")
-            const questions = ["hello", "test", "again"]
-            const colors = ["red", "yellow", "green"]
-            const h1 = document.querySelector("h1")
+            const questions = [
+                "What is your legal name?", "How old are you?", "What is your occupation?", "What is your highest level of education?",
+                "What country were you born in?", "What nationalities do you have?", "What is your current legal status in other countries?",
+                "What is your ethnicity?", "Were you born and raised as a Muslim, or did you convert?", 
+                "What city, state, and country do you currently live in?", "Do you have children? If so, what are their names, ages, and genders?",
+                "What are the names of your parents and siblings?", "Have you ever been married?", 
+                "What is your relationship with your family like?", "What are the professions of your family members?",
+                "What are the education levels of your family members?", "Where do your family members currently live?", 
+                "What is your concept of an Islamic marriage?", "Are you seeking only an Islamic marriage, or civil as well? Explain why.",
+                "What are your expectations of marriage?", "What are the three most important qualities you look for in a spouse?", 
+                "What is your view of the role of a husband?", "What is your view of the role of a wife?", 
+                "What would you consider serious enough to cause a divorce?", "Are you seeking a polygamous marriage? Explain why or why not.",
+                "What are your goals in life?", "Where do you want to live and why?", "What are your career goals?", 
+                "What is the role of religion in your life?", "Are you a spiritual person?", "Do you pray all five daily prayers on time?",
+                "Have you ever performed Umrah or Hajj?", "Do you pay Zakat every year?", "Do you give Sadaqah regularly?",
+                "How do you dress according to Islamic guidelines?", "Do you support the idea of utilizing babysitters and maids?",
+                "Do you have friends from the opposite sex?", "What are the things you do in your free time?", 
+                "How do you spend your vacations?", "Do you read? If yes, what do you like to read?", 
+                "Do you listen to music? If so, what kind?", "What is your relationship with your children's other parent?",
+                "How were you disciplined as a child?", "What is your view on public vs. Islamic schools for children?", 
+                "Do you believe in homeschooling your children?", "How do you handle disagreements?", "How do you express anger?",
+                "What do you do when you are angry?", "How do you express your admiration for someone?", "How do you apologize if you wrong someone?",
+                "Do you use foul language at home or in public?", "How do you make important decisions in your life?", 
+                "What is your understanding of proper health and nutrition?", "Do you exercise regularly? If so, how often?", 
+                "How do you support your own health and nutrition?", "How do you spend your money?", "How do you save your money?",
+                "Do you currently use a budget to manage your finances?", "Do you have any debts? If so, how are you managing them?",
+                "Do you want to have children?", "What is your relationship with your children?", "What is your view on raising and disciplining children?",
+                "What type of relationship do you want your children to have with non-Muslim classmates and friends?", 
+                "Would you send your children to visit extended family in another state or country?", "What type of relationship do you want your children to have with their grandparents?",
+                "Do you think you would need to move to another country after marriage? If so, why and where?", 
+                "If you divorced, who would take custody of the children?", "What would happen to household furnishings and the home if you divorced?",
+                "Do you celebrate Mawlid?", "What do you do to relax?", "What are you most grateful for?", 
+                "Do you use Twitter?", "Do you like anime?", "What is your happiest memory?", "What is your favorite childhood memory?", 
+                "Why do you want to get married?", "How much time do you expect to spend with your spouse?", 
+                "Do you hold grudges?", "Do you get angry easily?", "Are you able to see an issue from someone else’s perspective?", 
+                "How would you deal with conflict with your spouse?", "What is your biggest deal breaker?", "What do you like about yourself?", 
+                "What do you not like about yourself?", "What is your purpose in life and how will marriage help you fulfill it?"
+            ];
+
+            const colors = [
+                "linear-gradient(to right, #ff7e5f, #feb47b)", "linear-gradient(to right, #00c6ff, #0072ff)", 
+                "linear-gradient(to right, #f7971e, #ffd200)", "linear-gradient(to right, #8e2de2, #4a00e0)", 
+                "linear-gradient(to right, #f953c6, #b91d73)", "linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)", 
+                "linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b)", "linear-gradient(to right, #56ccf2, #2f80ed)", 
+                "linear-gradient(to right, #ff416c, #ff4b2b)", "linear-gradient(to right, #1c92d2, #f2fcfe)", 
+                "linear-gradient(to right, #ff5f6d, #ffc371)", "linear-gradient(to right, #00b09b, #96c93d)", 
+                "linear-gradient(to right, #fc466b, #3f5efb)", "linear-gradient(to right, #c33764, #1d2671)", 
+                "linear-gradient(to right, #00c9ff, #92fe9d)", "linear-gradient(to right, #f2709c, #ff9472)", 
+                "linear-gradient(to right, #5f2c82, #49a09d)", "linear-gradient(to right, #de6161, #2657eb)", 
+                "linear-gradient(to right, #f12711, #f5af19)", "linear-gradient(to right, #a1c4fd, #c2e9fb)", 
+                "linear-gradient(to right, #8a2387, #e94057, #f27121)", "linear-gradient(to right, #0f2027, #203a43, #2c5364)", 
+                "linear-gradient(to right, #f00000, #dc281e)", "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)", 
+                "linear-gradient(to right, #fc00ff, #00dbde)", "linear-gradient(to left, #ff7e5f, #feb47b)", 
+                "linear-gradient(to left, #ff416c, #ff4b2b)", "linear-gradient(to left, #1c92d2, #f2fcfe)", 
+                "linear-gradient(to left, #f7971e, #ffd200)", "linear-gradient(to left, #00b09b, #96c93d)"
+            ];
+
+            const h1 = document.querySelector("h1");
+
             function getRandomInteger(min, max) {
                 min = Math.ceil(min);
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min)) + min;
-                }
+            }
 
-                // const body = document.querySelector("body")
-                // console.dir(document.body)
             document.body.addEventListener("click", (e) => {
-                const randVal = getRandomInteger(0,3);
-                console.log(randVal)
-                h1.innerHTML = questions[randVal]
-                document.body.style.backgroundColor = colors[randVal]
-            })
-        })
+                const randVal = getRandomInteger(0, questions.length);
+                const randColor = getRandomInteger(0, colors.length);
+                h1.innerHTML = questions[randVal];
+                document.body.style.background = colors[randColor];
+            });
+        });
     </script>
     <style>
-        html {
-            /* height: 100vh;
-            width: 100vw; */
+        html, body {
+            height: 100%;
+            margin: 0;
         }
         body {
-            height: 100%;
-            width:100%;
-            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            transition: background 0.5s ease;
+            padding: 10%;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            margin: 0;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
-    <h1>test</h1>
+    <h1>Click anywhere to start</h1>
 </body>
 </html>
