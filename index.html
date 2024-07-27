@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Questions</title>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", (e) => {
+            console.log("testing...")
+            const questions = ["hello", "test", "again"]
+            const colors = ["red", "yellow", "green"]
+            const h1 = document.querySelector("h1")
+            function getRandomInteger(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+                }
+
+                // const body = document.querySelector("body")
+                // console.dir(document.body)
+            document.body.addEventListener("click", (e) => {
+                const randVal = getRandomInteger(0,3);
+                console.log(randVal)
+                h1.innerHTML = questions[randVal]
+                document.body.style.backgroundColor = colors[randVal]
+            })
+        })
+    </script>
+    <style>
+        html {
+            /* height: 100vh;
+            width: 100vw; */
+        }
+        body {
+            height: 100%;
+            width:100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>test</h1>
+</body>
+</html>
